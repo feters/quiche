@@ -379,7 +379,7 @@ const PROTOCOL_VERSION_DRAFT29: u32 = 0xff00_001d;
 pub const MAX_CONN_ID_LEN: usize = crate::packet::MAX_CID_LEN as usize;
 
 /// The minimum length of Initial packets sent by a client.
-pub const MIN_CLIENT_INITIAL_LEN: usize = 1200;
+pub const MIN_CLIENT_INITIAL_LEN: usize = 1440;
 
 #[cfg(not(feature = "fuzzing"))]
 const PAYLOAD_MIN_LEN: usize = 4;
@@ -401,7 +401,7 @@ const MAX_ACK_RANGES: usize = 68;
 const MAX_STREAM_ID: u64 = 1 << 60;
 
 // The default max_datagram_size used in congestion control.
-const MAX_SEND_UDP_PAYLOAD_SIZE: usize = 1200;
+const MAX_SEND_UDP_PAYLOAD_SIZE: usize = 1440;
 
 // The default length of DATAGRAM queues.
 const DEFAULT_MAX_DGRAM_QUEUE_LEN: usize = 0;
@@ -5740,9 +5740,9 @@ impl Default for TransportParams {
             initial_max_streams_bidi: 0,
             initial_max_streams_uni: 0,
             ack_delay_exponent: 3,
-            max_ack_delay: 25,
+            max_ack_delay: 20,
             disable_active_migration: false,
-            active_conn_id_limit: 2,
+            active_conn_id_limit: 8,
             initial_source_connection_id: None,
             retry_source_connection_id: None,
             max_datagram_frame_size: None,
